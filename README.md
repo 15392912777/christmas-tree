@@ -1,6 +1,6 @@
 # 🎄 圣诞树上，你能挂到第几层？
 
-**在线试玩：<https://15392912777.github.io/christmas-tree/>**（GitHub Pages）
+**在线试玩：<https://15392912777.github.io/christmas-tree/>**（GitHub Pages） · [源码仓库](https://github.com/15392912777/christmas-tree)
 
 一个可以直接拿去发布的「圣诞树默契问答」小游戏。**场景、角色、题目、台词与代码全部从零创作**：没有一张图片素材，没有任何第三方版权内容。
 

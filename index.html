@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2530">
+<title>圣诞树上，你能挂到第几层？🎄</title>
+<meta name="description" content="10 道关于我的小问题，猜中就能往上爬。">
+<meta property="og:title" content="圣诞树上，你能挂到第几层？🎄">
+<meta property="og:description" content="10 道关于我的小问题，猜中就能往上爬。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://15392912777.github.io/christmas-tree/">
+<meta property="og:image" content="https://15392912777.github.io/christmas-tree/docs/landing.png">
+<meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://15392912777.github.io/christmas-tree/">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='52' font-size='52'%3E%F0%9F%8E%84%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;700;800&family=Shantell+Sans:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app" class="app">
+
+  <div class="docked" id="docked"></div>
+
+  <!-- ══════════════════════════════ 1. invitation ══════════════════════════════ -->
+  <section class="scene landing is-active" id="sc-landing" aria-live="polite">
+    <div class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <i class="hero-hill hero-hill--back"></i>
+        <i class="hero-hill hero-hill--front"></i>
+      </div>
+      <i class="hero-glow"></i>
+      <div class="snow" id="snow-landing" aria-hidden="true"></div>
+
+      <div class="envelope is-open" id="envelope">
+        <i class="env-back"></i>
+        <div class="xcard">
+          <div class="polaroid">
+            <div class="polaroid-pic" id="polaroid-art"></div>
+            <span class="polaroid-name" id="polaroid-name">阿栗</span>
+          </div>
+          <h1 class="title" id="landing-title"></h1>
+          <div class="sticker" id="landing-sticker"></div>
+          <p class="proof">
+            <span class="proof-line" id="proof-count"></span>
+            <span class="proof-line" id="proof-top"></span>
+          </p>
+        </div>
+        <i class="env-front"></i>
+        <i class="env-seal"></i>
+      </div>
+    </div>
+
+    <div class="panel landing-panel">
+      <div class="snow-edge" id="snow-edge-landing"></div>
+      <div class="ballrow">
+        <div class="bauble is-big is-blank" style="--b1:#FF7EB0;--b2:#C7336A;--fs:1">
+          <i class="bauble-shadow"></i>
+          <span class="bauble-swing"><i class="bauble-cap"></i><span class="bauble-glass"><span class="bauble-name">?</span></span></span>
+        </div>
+      </div>
+      <p class="rule" id="landing-rule"></p>
+      <input id="name-input" class="name-input" type="text" maxlength="15" autocomplete="off" enterkeyhint="go">
+      <div class="error" id="name-error" role="alert"></div>
+      <button id="start-btn" class="btn gold" type="button"></button>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ 2. the climb ══════════════════════════════ -->
+  <section class="scene climb" id="sc-climb" aria-live="polite">
+    <div class="cam is-stage" id="cam">
+      <div class="cam-backdrop" id="cam-backdrop"></div>
+      <div class="shot" id="shot"><div class="layer" id="layer"></div></div>
+      <div class="cast host" id="host"></div>
+      <div class="cast elf" id="elf"></div>
+      <div class="speech is-elf" id="speech" aria-live="polite"></div>
+      <div class="speech is-host" id="speech-host" aria-live="polite"></div>
+      <div class="garland" id="garland" aria-hidden="true">
+        <div class="garland-bg" id="garland-bg"></div>
+        <div class="bulbs" id="garland-bulbs"></div>
+      </div>
+    </div>
+
+    <div class="panel qpanel is-questionless" id="qpanel">
+      <div class="snow-edge" id="snow-edge-q"></div>
+      <div class="ribbon">
+        <div class="ribbon-art" id="ribbon-art"></div>
+        <span class="ribbon-text" id="ribbon-text"></span>
+      </div>
+      <div class="qbox">
+        <div class="q" id="q-text"></div>
+        <div class="opts is-two" id="opts"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════ 3. the result ══════════════════════════════ -->
+  <section class="scene result" id="sc-result" aria-live="polite">
+    <div class="cam is-result-cam" id="cam-result">
+      <div class="cam-backdrop" id="cam-result-backdrop"></div>
+      <div class="shot" id="shot-result"><div class="layer" id="layer-result"></div></div>
+      <div class="cast host" id="host-result"></div>
+      <div class="cast elf" id="elf-result"></div>
+      <div class="ribbon result-ribbon">
+        <div class="ribbon-art" id="result-ribbon-art"></div>
+        <span class="ribbon-text" id="result-title"></span>
+      </div>
+    </div>
+    <div class="panel result-panel" id="result-panel">
+      <div class="snow-edge" id="snow-edge-r"></div>
+      <div class="result-card">
+        <p class="ending-line" id="ending-line" hidden></p>
+        <div class="perfect-badge" id="perfect-badge" hidden></div>
+        <p class="score-line" id="score-line"></p>
+        <p class="box-line" id="box-line" hidden></p>
+        <p class="comeback-line" id="comeback-line"></p>
+        <div class="actions">
+          <button class="btn gold" id="again-btn" type="button"></button>
+          <div class="result-links">
+            <button class="link-btn" id="share-btn" type="button"></button>
+            <span class="dot">·</span>
+            <button class="link-btn" id="board-btn" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="share-toast" id="share-toast" role="status"></div>
+    </div>
+  </section>
+
+  <!-- board sheet -->
+  <div class="sheet-backdrop" id="sheet-backdrop" hidden></div>
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+    <div class="sheet-head">
+      <h2 class="sheet-title" id="sheet-title"></h2>
+      <button class="sheet-close" id="sheet-close" type="button" aria-label="关闭">✕</button>
+    </div>
+    <p class="sheet-count" id="sheet-count"></p>
+    <div class="sheet-list" id="sheet-list"></div>
+  </div>
+
+  <div class="rotate" role="alert">
+    <div class="rotate-phone" aria-hidden="true"></div>
+    <p id="rotate-hint">把手机竖过来再玩</p>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/mascots.js"></script>
+<script src="js/art.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
